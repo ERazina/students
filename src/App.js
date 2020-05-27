@@ -2,6 +2,7 @@ import React from 'react';
 import Students from './components/Students/Students';
 import AddMessage from './components/AddMessage/AddMessage';
 import './App.scss';
+
 import {
   Route,
   Switch,

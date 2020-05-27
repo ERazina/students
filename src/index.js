@@ -5,13 +5,18 @@ import {createBrowserHistory} from 'history';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import students from './redux/reducers/students';
 const history = createBrowserHistory();
+const store = createStore(students);
 
 ReactDOM.render(
-  <Router history={history}>
-    <App/>
-  </Router>,
+  <Provider store={store}>
+    <Router history={history}>
+      <App/>
+    </Router>
+  </ Provider>,
   document.getElementById('root')
 );
 

@@ -6,7 +6,7 @@ import ReactTooltip from "react-tooltip";
 import {connect} from "react-redux";
 // import { addStudent } from './redux/actions/actions';
 import AddStudent from './components/AddStudent/AddStudent';
-import {visiibleAddForm} from './redux/actions/actions';
+import {visiibleAddForm, addStudent} from './redux/actions/actions';
 
 import {
   Route,
@@ -20,6 +20,10 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 
 class App extends React.Component {
+
+  onAddStudentSubmit = () => {
+    this.props.visiibleAddForm(false)
+  }
 render() {
  
   const { history } = this.props;
@@ -37,7 +41,7 @@ render() {
       </div>
       <ReactTooltip />
       {
-        this.props.visible ? <AddStudent /> : null
+        this.props.visible ? <AddStudent onSubmit={() => this.onAddStudentSubmit()}/> : null
       }
      <FontAwesomeIcon data-tip="add new student" className="icon" icon={faUserPlus} onClick={() => {
        this.props.visiibleAddForm(true)}}/>

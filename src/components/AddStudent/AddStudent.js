@@ -4,13 +4,34 @@ import {addStudent}  from "../../redux/actions/actions";
 
 class AddStudent extends React.Component {
 
+    state = {
+        value: ""
+    }
+
+    // handleSubmit(event) {
+    //     alert('Отправленное имя: ' + this.state.value);
+    //     event.preventDefault();
+    //     }
+
+    handleChange = (event) => {
+        // event.preventDefault();
+        this.setState({value: event.target.value});
+    }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.addStudent(this.state.value); //dispatch
+        // addStudent(this.state.value)
+        this.props.onSubmit();
+    }
+
     render() {
 
         return (
             
             <div className="students">
-               <form>
-                   <input type="text"></input>
+               <form onSubmit={this.onSubmit}>
+                   <input type="text" onChange={this.handleChange} value={this.state.value}></input>
                    <input type="submit"></input>
                </form>
             </div>
@@ -18,12 +39,13 @@ class AddStudent extends React.Component {
     }
 }
 
-const mapStateToProps = function(state) {
-    return {
-      student: state.student
-    }
-}
+// const mapStateToProps = function(state) {
+//     console.log(this.state)
+//     return {
+//       student: state.student
+//     }
+// }
 
-const mapDispatchToProps = {addStudent};
+// const mapDispatchToProps = {addStudent};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddStudent);
+export default connect(null, {addStudent})(AddStudent);

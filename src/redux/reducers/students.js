@@ -10,8 +10,8 @@ export default function studentsFunc(state, action) {
     }
     switch (action.type) {
         case ADD_STUDENT:
-          return Object.assign([], state, {
-            student: action.student
+          return Object.assign({}, state, {
+            students: state.students.concat([action.student])
         })
         case DELETE_STUDENT:
             return Object.assign([], state, {
@@ -28,7 +28,4 @@ export default function studentsFunc(state, action) {
         default:
           return state
         }
-  
-    // Пока не обрабатываем никаких экшенов
-    // и просто возвращаем состояние, которое приняли в качестве параметра
 }

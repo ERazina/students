@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import {addStudent}  from "./../../redux/actions/actions";
+import {addStudent, deleteStudent}  from "./../../redux/actions/actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import './Students.scss';
@@ -10,7 +10,13 @@ class Students extends React.Component {
     render() {
 
         let list = this.props.students.map((student) => {
-        return <li key={student}>{student}<button onClick={addStudent}>Change</button><FontAwesomeIcon data-tip="delete student" icon={faTrashAlt} className="icon" /></li>});
+            return (
+                <li key={student}>{student}
+                    <button>Change</button>
+                    <FontAwesomeIcon data-tip="delete student" icon={faTrashAlt} className="icon" onClick={() => {this.props.deleteStudent(student)}} />
+                </li>
+            )
+        });
 
         return (
 
@@ -30,6 +36,6 @@ const mapStateToProps = function(state) {
     }
 }
 
-const mapDispatchToProps = {};
+// const mapDispatchToProps = {deleteStudent};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Students);
+export default connect(mapStateToProps, {deleteStudent})(Students);

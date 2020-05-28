@@ -8,24 +8,26 @@ export default function studentsFunc(state, action) {
     if (typeof state === 'undefined') {
         return initialState;
     }
-    switch (action.type) {
-        case ADD_STUDENT:
-          return Object.assign({}, state, {
-            students: state.students.concat([action.student])
-        })
-        case DELETE_STUDENT:
-            return Object.assign([], state, {
-            student: action.student
-        })
-        case CHANGE_STUDENT:
-            return Object.assign([], state, {
-                student: action.student
-        })
-        case VISIBILITY_ADD_FORM:
-            return Object.assign({}, state,{
-                visible: action.visible
+    else{
+        switch (action.type) {
+            case ADD_STUDENT:
+            return Object.assign({}, state, {
+                students: state.students.concat([action.student])
             })
-        default:
-          return state
-        }
+            case DELETE_STUDENT:
+                return Object.assign({}, state, {
+                    students: state.students.concat().filter((item) => item !== action.student)
+            })
+            case CHANGE_STUDENT:
+                return Object.assign([], state, {
+                    student: action.student
+            })
+            case VISIBILITY_ADD_FORM:
+                return Object.assign({}, state,{
+                    visible: action.visible
+                })
+            default:
+            return state
+            }
+    }
 }

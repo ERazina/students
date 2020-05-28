@@ -7,6 +7,8 @@ import {
   changeStudent,
 } from './actions/actions';
 
+console.log(state);
+
 
 // function studentsReducer(state = initialState, action) {
 //   switch (action.type) {

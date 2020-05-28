@@ -7,12 +7,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import students from './redux/reducers/students';
+import studentsFunc from './redux/reducers/students';
 const history = createBrowserHistory();
-const store = createStore(students);
+const store = createStore(studentsFunc);
+
 
 ReactDOM.render(
+
   <Provider store={store}>
+   {/* { console.log(store.getState())} */}
+
     <Router history={history}>
       <App/>
     </Router>

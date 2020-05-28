@@ -1,16 +1,19 @@
-import { createStore } from 'redux';
-const initialState = {
-    students: [ "Steve Jobs", "Bill Gates"]
-}
-
-function studentsReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'ADD_STUDENT':
-      return state.concat([action.payload])
-    default:
-      return state
-  }
-}
+import { createStore } from 'redux'
+import {studentsFunc} from './../reducers/students'
+let store = createStore(studentsFunc);
+import {
+  addStudent,
+  deleteStudent,
+  changeStudent,
+} from './actions/actions';
 
 
-const store = createStore(studentsReducer)
+// function studentsReducer(state = initialState, action) {
+//   switch (action.type) {
+//     case 'ADD_STUDENT':
+//       return state.concat([action.payload])
+//     default:
+//       return state
+//   }
+// }
+

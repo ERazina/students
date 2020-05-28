@@ -4,8 +4,15 @@
 
 export const ADD_STUDENT = "ADD_STUDENT";
 export const DELETE_STUDENT = "DELETE_STUDENT";
+export const CHANGE_STUDENT = "CHANGE_STUDENT";
+export const VISIBILITY_ADD_FORM = "VISIBILITY_ADD_FORM";
 
-
+export function visiibleAddForm(flag){
+    return {
+        type: VISIBILITY_ADD_FORM,
+        visible: flag
+    }
+}
 /*
 * action generators
 */
@@ -23,5 +30,11 @@ export function deleteStudent(student){
         student
     }
 }
-// dispatch(addStudent("Elina Razina"));
+
+export function changeStudent(student){
+    return {
+        type: CHANGE_STUDENT,
+        student
+    }
+}
 

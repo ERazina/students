@@ -4,7 +4,7 @@ import AddMessage from './components/AddMessage/AddMessage';
 import './App.scss';
 import ReactTooltip from "react-tooltip";
 import {connect} from "react-redux";
-// import { addStudent } from './redux/actions/actions';
+
 import AddStudent from './components/AddStudent/AddStudent';
 import {visiibleAddForm, addStudent} from './redux/actions/actions';
 

@@ -19,9 +19,12 @@ export default function studentsFunc(state, action) {
                     students: state.students.concat().filter((item) => item !== action.student)
             })
             case CHANGE_STUDENT:
-                return Object.assign([], state, {
-                    student: action.student
-            })
+                return Object.assign({}, state, {
+                    students: state.students.concat().map(
+                        state.student === action.student ?
+                        action.student : null
+                    )
+                })
             case VISIBILITY_ADD_FORM:
                 return Object.assign({}, state,{
                     visible: action.visible

@@ -26,7 +26,6 @@ export function addStudent(student){
 }
 
 export function deleteStudent(student){
-    console.log(student);
     return {
         type: DELETE_STUDENT,
         student

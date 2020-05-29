@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import {addStudent, deleteStudent}  from "./../../redux/actions/actions";
+import {addStudent, deleteStudent, changeStudent}  from "./../../redux/actions/actions";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import './Students.scss';
@@ -12,7 +12,7 @@ class Students extends React.Component {
         let list = this.props.students.map((student) => {
             return (
                 <li key={student}>{student}
-                    <button>Change</button>
+                    <button data-tip="change student name" onClick={() => {this.props.changeStudent(student)}}>Change</button>
                     <FontAwesomeIcon data-tip="delete student" icon={faTrashAlt} className="icon" onClick={() => {this.props.deleteStudent(student)}} />
                 </li>
             )
